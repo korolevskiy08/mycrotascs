@@ -12,16 +12,18 @@ type TopCarsType = {
 export const NewComponents = (props: NewComponentsType) => {
     return (
         <div>
-            {props.topCars.map((el, index) => {
-                return (
-                    <table>
-                        <tr key={index}>
+            <table>
+                {props.topCars.map((el, index) => {
+                    return (
+                        <tbody key={index}>
+                        <tr>
                             <td>{el.manufacturer}</td>
                             <td>{el.model}</td>
                         </tr>
-                    </table>
-                )
-            })}
+                        </tbody>
+                    )
+                })}
+            </table>
         </div>
     )
 }
