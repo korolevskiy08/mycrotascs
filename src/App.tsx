@@ -1,4 +1,4 @@
-import React, {MouseEvent} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Header} from "./components/Header";
 import {Body} from "./components/Body";
@@ -26,6 +26,17 @@ function App() {
         console.log(text)
     }
 
+    let[a, setA] = useState(1);
+
+    const onClickHandler = () => {
+        setA(++a);
+        console.log(a)
+    }
+
+    const deleteValue = () => {
+        setA(0)
+    }
+
     return (
         <div className="App">
             <h1>First Task</h1>
@@ -46,6 +57,11 @@ function App() {
             <Button name={'MyYouTubeChanel2'} callBack={()=>ButtonFoo2('Im Pablo')}/>
             <Button name={'MyYouTubeChanel3'} callBack={ ()=>ButtonFoo3('im stupid button')}/>
 
+            <h1>Fourth Task</h1>
+
+            <h1>{a}</h1>
+            <button onClick={onClickHandler}>Click</button>
+            <button onClick={deleteValue}>Delete</button>
         </div>
     );
 }
