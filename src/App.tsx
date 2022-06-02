@@ -6,6 +6,9 @@ import {Footer} from "./components/Footer";
 import {NewComponents} from "./components/NewComponents";
 import {Button} from "./components/Button";
 import {FilterComponent} from "./components/FilterComponent";
+import {FullInput} from "./components/FullInput";
+import {Input} from "./components/Input";
+import {ButtonAddMessage} from "./components/ButtonAddMessage";
 
 
 const topCars = [
@@ -66,6 +69,26 @@ function App() {
         filteredMoney = money.filter(el => el.banknots === 'Dollars')
     }
 
+    // input
+
+    let [message, setMessage] = useState([
+        {message: "message1"},
+        {message: "message2"},
+        {message: "message3"}
+    ])
+
+    let [title, setTitle] = useState('')
+
+    const addMassage = (title: string) => {
+        let newMessage = {message: title}
+        setMessage([newMessage, ...message])
+    }
+
+    const onclickButtonHandler = () => {
+        addMassage(title)
+        setTitle('')
+    }
+
     return (
         <div className="App">
             <h1>First Task</h1>
@@ -94,6 +117,15 @@ function App() {
 
             <FilterComponent callBack={onClickFilterHandler} filteredMoney={filteredMoney}/>
 
+
+            {/*<FullInput addMassage={addMassage}/>*/}
+
+            <Input setTitle={setTitle} title={title}/>
+            <ButtonAddMessage name={'+'} callBack={onclickButtonHandler}/>
+
+            <div>
+                {message.map((el, index) => <div key={index}> {el.message} </div>)}
+            </div>
         </div>
     );
 }
